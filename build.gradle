@@ -127,8 +127,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     //used to test with dripium
-    implementation fg.deobf("curse.maven:re-avaritia-623969:5740694")
-
+    implementation fg.deobf("curse.maven:avaritia-lite-430116:5255955")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

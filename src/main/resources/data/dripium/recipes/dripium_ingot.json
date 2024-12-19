@@ -10,12 +10,12 @@
 	{
 		"W":
 		{
-			"item": "dripium:raw_dripium_ingot"
+			"item": "dripium:raw_dripium_block"
 		}
 	},
 	"result":
 	{
-		"item": "dripium:raw_dripium",
+		"item": "dripium:dripium_ingot",
 		"count": 1
 	}
 }					
