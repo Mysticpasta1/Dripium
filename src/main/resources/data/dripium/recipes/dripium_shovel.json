@@ -1,0 +1,26 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		" W ",
+		" S ",
+		" S "
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "dripium_dripium_block"
+		},
+
+		"S": {
+			"item": "dripium:dripium_rod"
+		}
+	},
+	"result":
+	{
+		"item": "dripium:dripium_shovel",
+		"count": 1
+	}
+	
+}					

@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"W W",
+		"WWW",
+		"WWW"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "dripium_dripium_block"
+		}
+	},
+	"result":
+	{
+		"item": "dripium:dripium_chestplate",
+		"count": 1
+	}
+	
+}					

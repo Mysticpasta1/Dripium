@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"WWW",
+		"WWW",
+		"WWW"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "dripium:dripium_nugget"
+		}
+	},
+	"result":
+	{
+		"item": "dripium:raw_dripium_block",
+		"count": 1
+	}
+	
+}					

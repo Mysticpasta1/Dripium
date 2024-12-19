@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "dripium:block/dripium_block" }
+    }
+}

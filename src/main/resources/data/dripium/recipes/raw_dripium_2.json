@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"WWW",
+		"WWW",
+		"WWW"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "avaritia:infinity_block"
+		}
+	},
+	"result":
+	{
+		"item": "dripium:raw_dripium",
+		"count": 1
+	}
+}					

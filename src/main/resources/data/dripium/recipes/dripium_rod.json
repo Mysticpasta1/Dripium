@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"   ",
+		" W ",
+		" W "
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "dripium:dripium_block"
+		}
+	},
+	"result":
+	{
+		"item": "dripium:dripium_rod",
+		"count": 2
+	}
+	
+}					
