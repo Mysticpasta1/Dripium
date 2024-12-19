@@ -1,6 +1,7 @@
 package com.mystic.dripium;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -54,8 +55,9 @@ public class Dripium {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public static final RegistryObject<CreativeModeTab> DRIPIUM_TAB = CREATIVE_MODE_TABS.register("dripium_tab",
-            () -> CreativeModeTab.builder().icon(() ->
-                    DRIPIUM_INGOT.get().getDefaultInstance()).displayItems((parameters, output) -> {
+        () -> CreativeModeTab.builder()
+            .title(Component.literal("Dripium"))
+            .icon(() -> DRIPIUM_INGOT.get().getDefaultInstance()).displayItems((parameters, output) -> {
                 output.accept(DRIPIUM_BLOCK.get());
                 output.accept(RAW_DRIPIUM_BLOCK.get());
                 output.accept(RAW_DRIPIUM.get());
