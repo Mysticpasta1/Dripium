@@ -1,11 +1,14 @@
 package com.mystic.dripium;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,6 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 @Mod(Dripium.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Dripium {
     public static final String MODID = "dripium";
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
@@ -31,10 +35,10 @@ public class Dripium {
     }
 
     //ITEMS
-    public static final RegistryObject<Item> DRIPIUM_HELMET = ITEMS.register("dripium_helmet", () -> new ItemArmorDripium(BasicArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> DRIPIUM_CHESTPLATE = ITEMS.register("dripium_chestplate", () -> new ItemArmorDripium(BasicArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> DRIPIUM_LEGGINGS = ITEMS.register("dripium_leggings", () -> new ItemArmorDripium(BasicArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> DRIPIUM_BOOTS = ITEMS.register("dripium_boots", () -> new ItemArmorDripium(BasicArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> DRIPIUM_HELMET = ITEMS.register("dripium_helmet", () -> new ItemArmorDripium(BasicArmorMaterial.ArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().durability(Integer.MAX_VALUE)));
+    public static final RegistryObject<Item> DRIPIUM_CHESTPLATE = ITEMS.register("dripium_chestplate", () -> new ItemArmorDripium(BasicArmorMaterial.ArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().durability(Integer.MAX_VALUE)));
+    public static final RegistryObject<Item> DRIPIUM_LEGGINGS = ITEMS.register("dripium_leggings", () -> new ItemArmorDripium(BasicArmorMaterial.ArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().durability(Integer.MAX_VALUE)));
+    public static final RegistryObject<Item> DRIPIUM_BOOTS = ITEMS.register("dripium_boots", () -> new ItemArmorDripium(BasicArmorMaterial.ArmorMaterial.ARMOR_DRIPIUM, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().durability(Integer.MAX_VALUE)));
 
     public static final RegistryObject<Item> DRIPIUM_AXE = ITEMS.register("dripium_axe", () -> new DripiumAxe(ToolInit.DRIPIUM));
     public static final RegistryObject<Item> DRIPIUM_PICKAXE = ITEMS.register("dripium_pickaxe", () -> new DripiumPickaxe(ToolInit.DRIPIUM));
@@ -74,5 +78,17 @@ public class Dripium {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+    }
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            if (ItemArmorDripium.hasAnyArmorOn(player)) {
+                if (ItemArmorDripium.hasAnyCorrectArmorOn(ItemArmorDripium.armorMaterial, player)) {
+                    event.setAmount(0);
+                    event.setCanceled(true);
+                }
+            }
+        }
     }
 }

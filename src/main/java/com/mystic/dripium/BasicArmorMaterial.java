@@ -10,10 +10,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.Supplier;
 
 public class BasicArmorMaterial {
-    public static final net.minecraft.world.item.ArmorMaterial ARMOR_DRIPIUM = new ArmorMaterial( "dripium", new int[] {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE} , Integer.MAX_VALUE, SoundEvents.ARMOR_EQUIP_IRON, Double.MAX_VALUE, Float.MAX_VALUE, () -> Ingredient.of(Dripium.DRIPIUM_BLOCK.get()));
-    private static class ArmorMaterial implements net.minecraft.world.item.ArmorMaterial{
+    public static class ArmorMaterial implements net.minecraft.world.item.ArmorMaterial{
+        public static final net.minecraft.world.item.ArmorMaterial ARMOR_DRIPIUM = new ArmorMaterial( "dripium", new int[] {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE} , Integer.MAX_VALUE, SoundEvents.ARMOR_EQUIP_IRON, Double.MAX_VALUE, Float.MAX_VALUE, () -> Ingredient.of(Dripium.DRIPIUM_BLOCK.get()));
 
-        private static final int[] Max_Damage_Array = new int[] {13,15,16,11};
+        private static final int[] Max_Damage_Array = new int[] {Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE};
         private final String name;
         private final int[] damageReductionAmountArray;
         private final int enchantability;
